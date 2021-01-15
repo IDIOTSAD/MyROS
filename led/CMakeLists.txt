@@ -205,8 +205,8 @@ include_directories(
 
 add_executable(${PROJECT_NAME} src/led.cpp)
 add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES} -lwiringPi)
+target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES} -lwiringPi -lrt)
 
 add_executable(listen src/listen.cpp)
 add_dependencies(listen ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(listen ${catkin_LIBRARIES} -lwiringPi)
+target_link_libraries(listen ${catkin_LIBRARIES} -lwiringPi -lrt)
