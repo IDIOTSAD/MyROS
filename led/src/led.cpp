@@ -2,8 +2,8 @@
 #include <std_msgs/String.h>
 #include <wiringPi.h>
 
-#define LED_PIN 29 // LED Pin
-#define SW_PIN 30  // Switch Pin
+#define LED_PIN 5 // LED Pin
+#define SW_PIN 6  // Switch Pin
 
 int main(int argc, char **argv)
 {
