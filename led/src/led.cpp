@@ -5,12 +5,21 @@
 #define LED_PIN 5 // LED Pin
 #define SW_PIN 6  // Switch Pin
 
+void ledCallback(const std_msgs::String::ConstPtr& msg)
+{
+  ROS_INFO("LED is : [%s]", msg->data.c_str());
+  if(msg->data.c_str() == "LEDON")
+      digitalWrite(LED_PIN, HIGH);
+  else
+      digitalWrite(LED_PIN, LOW);
+}
+
 int main(int argc, char **argv)
 {
     ros::init(argc, argv, "led");
     ros::NodeHandle nh;
-    ros::Publisher chatter_pub = nh.advertise<std_msgs::String>("Message", 1000);
-    
+    ros::Publisher chatter_pub = nh.advertise<std_msgs::String>("button", 1000);
+    ros::Subscriber sub = nh.subscribe("led", 1000, ledCallback);
     std_msgs::String msg;
 
     wiringPiSetupGpio();
